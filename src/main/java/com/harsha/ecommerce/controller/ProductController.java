@@ -6,6 +6,8 @@ import com.harsha.ecommerce.entity.Product;
 import com.harsha.ecommerce.service.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import java.util.List;
 
@@ -19,6 +21,7 @@ public class ProductController {
     }
 
     // CREATE PRODUCT
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ProductResponseDto createProduct(
             @Valid @RequestBody ProductRequestDto dto) {
@@ -27,12 +30,14 @@ public class ProductController {
 
 
     // GET ALL PRODUCTS
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     @GetMapping
     public List<ProductResponseDto> getAllProducts(){
         return productService.getAllProducts();
     }
 
     // GET PRODUCT BY ID
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     @GetMapping("/{id}")
     public ProductResponseDto getProductById(@PathVariable Long id){
         return productService.getProductById(id);
