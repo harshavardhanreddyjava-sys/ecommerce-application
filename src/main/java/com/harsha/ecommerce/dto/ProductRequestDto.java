@@ -17,7 +17,7 @@ public class ProductRequestDto {
 
     @NotNull(message ="Price Is Required")
     @Min(value = 1 , message = "Price Must Be Greater Than 0")
-    private double price;
+    private Double price;
 
     @NotNull(message = "Stock Is Required")
     @Min(value = 0, message = "Stock Cannot Be Negative")
