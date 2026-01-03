@@ -1,13 +1,15 @@
 package com.harsha.ecommerce.service;
 
+import com.harsha.ecommerce.dto.ProductRequestDto;
+import com.harsha.ecommerce.dto.ProductResponseDto;
 import com.harsha.ecommerce.entity.Product;
 
 import java.util.List;
 
 public interface ProductService {
-    Product createProduct(Product product);
+    ProductResponseDto createProduct(ProductRequestDto product);
 
-    List<Product> getAllProducts();
+    List<ProductResponseDto> getAllProducts();
 
-    Product getProductById(Long id);
+    ProductResponseDto getProductById(Long id);
 }

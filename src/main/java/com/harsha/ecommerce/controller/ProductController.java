@@ -1,7 +1,10 @@
 package com.harsha.ecommerce.controller;
 
+import com.harsha.ecommerce.dto.ProductRequestDto;
+import com.harsha.ecommerce.dto.ProductResponseDto;
 import com.harsha.ecommerce.entity.Product;
 import com.harsha.ecommerce.service.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,19 +20,21 @@ public class ProductController {
 
     // CREATE PRODUCT
     @PostMapping
-    public Product createProduct(@RequestBody Product product){
-        return productService.createProduct(product);
+    public ProductResponseDto createProduct(
+            @Valid @RequestBody ProductRequestDto dto) {
+        return productService.createProduct(dto);
     }
+
 
     // GET ALL PRODUCTS
     @GetMapping
-    public List<Product> getAllProducts(){
+    public List<ProductResponseDto> getAllProducts(){
         return productService.getAllProducts();
     }
 
     // GET PRODUCT BY ID
     @GetMapping("/{id}")
-    public Product getProductById(@PathVariable Long id){
+    public ProductResponseDto getProductById(@PathVariable Long id){
         return productService.getProductById(id);
     }
 
