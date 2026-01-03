@@ -2,9 +2,10 @@ package com.harsha.ecommerce.service;
 
 import com.harsha.ecommerce.entity.Product;
 import com.harsha.ecommerce.repository.ProductRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
     public ProductServiceImpl(ProductRepository productRepository) {
